@@ -17,16 +17,18 @@
     .header
       .navbar.navbar-inverse
         .navbar-inner
-          %a.brand{:href => "#"} Treasure Trove
+          %p.pull-left
+            = image_tag "tt_small.png"
+          %a.brand{:href => root_path} Treasure Trove
           %ul.nav
             %li.active
-              %a{:href => "#"} Home
+              %a{:href => root_path} Search
             %li
-              %a{:href => "#"} Stuff
+              %a{:href => results_index_path} Results
             %li
-              %a{:href => "#"} More stuff
+              %a{:href => details_show_path} Details
 
-    .container.content
-      = yield
+    
+    = yield
 
     .container.footer

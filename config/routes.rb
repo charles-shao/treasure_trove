@@ -1,4 +1,6 @@
 TreasureTrove::Application.routes.draw do
+  get "details/show"
+
   get "results/index"
 
   # The priority is based upon order of creation:
