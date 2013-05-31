@@ -5,6 +5,8 @@
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}/
+    %link{ href: '/image/favicon.png', rel: 'shortcut icon', type: 'image/png' }/
+    %link{ href: '/image/favicon.png', rel: 'apple-touch-icon', type: 'image/png' }/
     %title= content_for?(:title) ? yield(:title) : "Treasure Trove"
     = stylesheet_link_tag "application", :media => "all"
     / Le HTML5 shim, for IE6-8 support of HTML elements
@@ -17,7 +19,7 @@
     .header
       .navbar.navbar-inverse
         .navbar-inner
-          %p.pull-left
+          %p.pull-left{:style => "padding-top:4px; padding-right:10px;"}
             = image_tag "tt_small.png"
           %a.brand{:href => root_path} Treasure Trove
           %ul.nav
