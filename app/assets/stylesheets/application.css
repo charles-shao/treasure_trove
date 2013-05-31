@@ -11,3 +11,30 @@
  *= require_self
  *= require_tree .
  */
+
+body
+{
+background-image:url('pg.png');
+background-repeat:repeat;]
+}
+
+.input-mysize { width: 450px;
+				height: 150px; }
+
+.center-div {
+	top: 50%;
+	left: 50%;
+}
+
+
+.mydiv {
+    top: 50%;
+    left: 30%;
+    width: 900px;
+    height: 500px;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+    position:fixed;
+}
