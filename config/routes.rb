@@ -1,5 +1,5 @@
 TreasureTrove::Application.routes.draw do
-  post "details/show"
+  get "details/show"
 
   post "results/index"
 
