@@ -1,0 +1,30 @@
+.detail-container
+
+  .left-container{:style => "background-color: #ffffff;"}
+    .well
+      %iframe{:frameborder => "0", :src => "http://trove.nla.gov.au/ndp/del/printArticlePdf/#{article['id']}/3?print=n", :style => "width:700px; height:850px;"}
+
+
+  .right-container{:style => "background-color: #ffffff;"}
+    .well
+      %ul.nav.nav-pills{:id => "details-tab"}
+        %li.active
+          %a{"data-toggle" => "tab", :href => "#text"} Text
+        %li
+          %a{"data-toggle" => "tab", :href => "#entities"} Entities
+        %li
+          %a{"data-toggle" => "tab", :href => "#wiki"} Wikipedia Articles
+        %li
+          %a{"data-toggle" => "tab", :href => "#nswapi"} NSW API
+        %li
+          %a{"data-toggle" => "tab", :href => "#maps"} Maps
+
+      .tab-content
+        #text.tab-pane.active
+          = article['articleText'].html_safe
+        #entities.tab-pane.active
+          entities stuff
+        #wiki.tab-pane.active
+          wiki stuff
+        #nswapi.tab-pane.active
+        #maps.tab-pane.active

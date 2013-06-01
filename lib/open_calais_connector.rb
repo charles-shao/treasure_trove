@@ -4,20 +4,6 @@ class OpenCalaisConnector
  
   base_uri 'api.opencalais.com'
   format :json
- 
-  TEST = {ter: {"_typeGroup"=>"relations",
- "_type"=>"PersonCommunication",
- "persondescription"=>"East  Germans",
- "status"=>"announced",
- "_typeReference"=>"http://s.opencalais.com/1/type/em/r/PersonCommunication",
- "instances"=>
-  [{"detection"=>
-     "[ several  times  a  week  and   a  total  of  ]51  East  Germans   met[  their  death  while  trying   to ]",
-    "prefix"=>" several  times  a  week  and   a  total  of  ",
-    "exact"=>"51  East  Germans   met",
-    "suffix"=>"  their  death  while  trying   to ",
-    "offset"=>2327,
-    "length"=>23}]}}
 
   DEFAULT_OPTIONS = {'content-type' => 'text/html', 'outputformat' => 'application/json'}
  
@@ -33,7 +19,7 @@ class OpenCalaisConnector
  
 
   def clean_results(results)
-    cleaned = {entities: {}, relations: {}}
+    cleaned = {entities: {}, relations: {}, topics: []}
     results.each_value do |value|
       if value.key? '_typeGroup'
         group = value['_typeGroup']
@@ -41,6 +27,8 @@ class OpenCalaisConnector
           clean_entities(value, cleaned)
         elsif group == 'relations'
           clean_relations(value, cleaned)
+        elsif group == 'topics'
+          clean_topics(value, cleaned)
         end
       end
     end
@@ -50,7 +38,7 @@ class OpenCalaisConnector
 
   def clean_entities(entity_hash, cleaned)
     type = entity_hash['_type']
-    subset = entity_hash.except('_typeGroup', '_type')
+    subset = entity_hash.except('_typeGroup', '_type', '_typeReference')
     if cleaned[:entities].key? type
       cleaned[:entities][type] << subset
     else
@@ -61,12 +49,16 @@ class OpenCalaisConnector
 
   def clean_relations(relation_hash, cleaned)
     type = relation_hash['_type']
-    subset = relation_hash.except('_typeGroup', '_type')
+    subset = relation_hash.except('_typeGroup', '_type', '_typeReference')
     if cleaned.key? type
       cleaned[:relations][type] << subset
     else
       cleaned[:relations][type] = [subset]
     end
+  end
+
+  def clean_topics(topics_hash, cleaned)
+    cleaned[:topics] << {name: topics_hash['categoryName'], score: topics_hash['score']}
   end
 
 end

@@ -14,4 +14,15 @@ class ResultsController < ApplicationController
   	end
 
   end
+
+  def fetch_result
+    if params[:q].present?
+      results = TROVE.query_articles params[:q]
+      partial = render_to_string :partial => 'results/results', :locals => {:results => results, :q => params[:q]}
+      render :text => partial
+    else
+      render :text => nil
+    end
+  end
+
 end

@@ -1,0 +1,12 @@
+.item
+  .container.content
+    .container.well{:style => "min-height: 800px; background-color: #ffffff;"}
+      %h2= "Results for #{q}"
+      - results.each do |result|
+        .div
+          %h4= link_to result['heading'], details_show_path(:article => result['url'])
+          -#%a.active-result{:article => result['url']}= result['heading']
+          %p= result['snippet']
+          %p= result['title']['value']
+          %hr
+      %hr
