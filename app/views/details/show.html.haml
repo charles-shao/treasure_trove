@@ -37,8 +37,13 @@
         #text.tab-pane.active
           = @article['articleText'].html_safe
         #entities.tab-pane
+          %h5 Topics
           - @open_calais[:topics].each do |topic|
-            %span.label= topic[:name]
+            %span.label.label-success= topic[:name]
+          %h5 Suggested Tags
+          - @open_calais[:tags].each do |tag|
+            %span.label= tag
+          %h5 Entities
           %ul
           - @open_calais[:entities].each do |type, entities|
             %li= type

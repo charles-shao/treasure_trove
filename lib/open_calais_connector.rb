@@ -5,7 +5,7 @@ class OpenCalaisConnector
   base_uri 'api.opencalais.com'
   format :json
 
-  DEFAULT_OPTIONS = {'content-type' => 'text/html', 'outputformat' => 'application/json'}
+  DEFAULT_OPTIONS = {'content-type' => 'text/html', 'outputformat' => 'application/json', 'enableMetadataType' => 'SocialTags'}
  
   def initialize(api_key)
     DEFAULT_OPTIONS['x-calais-licenseID'] = api_key
@@ -19,7 +19,7 @@ class OpenCalaisConnector
  
 
   def clean_results(results)
-    cleaned = {entities: {}, relations: {}, topics: []}
+    cleaned = {entities: {}, relations: {}, topics: [], tags: []}
     results.each_value do |value|
       if value.key? '_typeGroup'
         group = value['_typeGroup']
@@ -29,12 +29,16 @@ class OpenCalaisConnector
           clean_relations(value, cleaned)
         elsif group == 'topics'
           clean_topics(value, cleaned)
+        elsif group == 'socialTag'
+          cleaned[:tags] << value['name']
         end
       end
     end
+    # cleaned = map_entity_relations(results, cleaned)
     cleaned
   end
 
+  private
 
   def clean_entities(entity_hash, cleaned)
     type = entity_hash['_type']
@@ -55,6 +59,23 @@ class OpenCalaisConnector
     else
       cleaned[:relations][type] = [subset]
     end
+  end
+
+  def clean_social(social_hash)
+
+  end
+
+  def map_entity_relations(raw, cleaned)
+    cleaned[:relations].each do |relation|
+      relation
+      relation.each do |k, v|
+
+        if v.start_with? 'http'
+          relation[k] = raw[v]['name']
+        end
+      end
+    end
+
   end
 
   def clean_topics(topics_hash, cleaned)
