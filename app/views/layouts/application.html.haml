@@ -24,8 +24,12 @@
           %a.brand{:href => root_path} Treasure Trove
           %ul.nav
             %li.active
-              %a{:href => root_path} Search
-
+              %a{:href => root_path} Home
+            %li
+              %a{:href => root_path} About
+          .pull-right{:style => "padding-top:5px;"}
+            %form{:action => "/results/index", :method => "post", :style => "height: 0px;"}
+              %input.search-query{:placeholder => "Search", :type => "text",:name => "search_param"}/
     
     = yield
 

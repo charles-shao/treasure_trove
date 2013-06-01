@@ -1,10 +1,12 @@
 .container.content
 	.container.well{:style => "min-height: 800px; background-color: #ffffff;"}
 		%h2= "Results for #{@search_params}"
-		- @results.each do |result|
-			.div
-				%h4= link_to result['heading'], details_show_path(:article => result['url'])
-				%p= result['snippet'].html_safe
-				%p= result['title']['value']
-				%hr
-		%hr
+		- if @results.nil?
+			%h4 Nothing was found... Try again.
+		- else
+			- @results.each do |result|
+				.div
+					%h4= link_to result['heading'], details_show_path(:article => result['url'])
+					%p= result['snippet'].html_safe
+					%p= result['title']['value']
+					%hr
