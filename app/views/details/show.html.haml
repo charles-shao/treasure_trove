@@ -45,15 +45,18 @@
             %span.label= tag
           %h5 Entities
           %ul
+          - i = 0
           - @open_calais[:entities].each do |type, entities|
-            %li= type
+            %h3= type
             %ul
-              - entities.each do |entity|
-                %li= entity['name']
-                - entity.each do |property, value|
-                  - if !['instances','name', 'relevance', 'resolutions'].include? property and value != 'N/A'
-                    = "#{property}: #{value}"
-                    %br
+              - entities.each_with_index do |entity, index|
+                %li
+                  %a.entity-link{"data-target" => "#data-#{i}-#{index}", "data-toggle" => "collapse", :type => "button", :entity_name => "#{entity['name']}", :loaded => "false"}
+                    = entity['name']
+                  .collapse{:id => "data-#{i}-#{index}"}
+                    .well
+                - i = i+1
+                
 
 
 
