@@ -40,6 +40,10 @@
             %ul
               - entities.each do |entity|
                 %li= entity['name']
+                - entity.each do |property, value|
+                  - if !['instances','name', 'relevance', 'resolutions'].include? property and value != 'N/A'
+                    = "#{property}: #{value}"
+                    %br
 
 
         #wiki.tab-pane

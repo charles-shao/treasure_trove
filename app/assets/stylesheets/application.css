@@ -15,8 +15,8 @@
 
 body
 {
-background-image:url('tt_bg.png');
-background-repeat:repeat;]
+  background-image: url('tt_bg.png');
+  background-repeat:repeat;
 }
 
 .input-mysize { width: 450px;}

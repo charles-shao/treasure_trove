@@ -5,8 +5,7 @@ class DBpediaConnector
   base_uri 'lookup.dbpedia.org'
   format :json
  
- 
-  DEFAULT_OPTIONS = {:MaxHits => 1}
+
   HEADERS = {'Accept' => 'application/json'}
  
   def get_entry(term, entity_type=nil)
@@ -15,7 +14,7 @@ class DBpediaConnector
   end
  
   def query(term, entity_type=nil)
-    options[:QueryString] = URI::escape(term)
+    options = {QueryString: URI::escape(term)}
     if entity_type
       options[:QueryClass] = entity_type
     end
