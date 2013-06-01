@@ -5,6 +5,8 @@
       .span11.well{:style => "padding-bottom: 100px; padding-top:100px; padding-left: 50px; padding-right: 50px; width:700px; background-color:#ffffff"}
         %img{:src => "tt_logo.png", :style => "padding-bottom:20px;"}
         %center
-          .form-inline{:action => results_index_path, :method => "post"}
-            %input{:name => "search", :type => "text", :class => "input-mysize"}
-            %input{:type => "submit", :value => "Search", :class => "btn btn-success"}
+          
+
+          %form.form-inline{:action => "/results/index", :method => "post"}
+            %input{:name => "search_param", :type => "text", :class => "input-mysize"}/
+            %input{:name => "commit", :type => "submit", :value => "Search", :class => "btn btn-success"}/

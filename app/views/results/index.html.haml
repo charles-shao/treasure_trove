@@ -1,39 +1,15 @@
 .container.content
 	.container.well{:style => "min-height: 800px; background-color: #ffffff;"}
-		%h2 Results
-		.div
-			%h4 1. News article 1 blah blah blah
-			%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt scelerisque turpis, ac aliquet purus sagittis vitae. Sed id risus ut est facilisis lobortis id in massa. Donec feugiat turpis ullamcorper massa vehicula convallis. In pellentesque erat orci, sit amet tincidunt lorem. Nam vel quam velit. Fusce vel sem sit amet quam consequat egestas. Etiam dignissim viverra auctor.
+		%h2= "Results for #{@search_params}"
+		- @results.each do |result|
+			.div
+				%h4= link_to result['heading'], details_show_path(:article => result['url'])
+				%p= result['snippet']
+				%p= result['title']['value']
+				%hr
 
-
-		%hr
-		.div
-			%h4 2. News article 3 blah blah blah
-			%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt scelerisque turpis, ac aliquet purus sagittis vitae. Sed id risus ut est facilisis lobortis id in massa. Donec feugiat turpis ullamcorper massa vehicula convallis. In pellentesque erat orci, sit amet tincidunt lorem. Nam vel quam velit. Fusce vel sem sit amet quam consequat egestas. Etiam dignissim viverra auctor.
-
-
-		%hr
-		.div
-			%h4 3. News article 3 blah blah blah
-			%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt scelerisque turpis, ac aliquet purus sagittis vitae. Sed id risus ut est facilisis lobortis id in massa. Donec feugiat turpis ullamcorper massa vehicula convallis. In pellentesque erat orci, sit amet tincidunt lorem. Nam vel quam velit. Fusce vel sem sit amet quam consequat egestas. Etiam dignissim viverra auctor.
-
-
-		%hr
-		.div
-			%h4 4. News article 4 blah blah blah
-			%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt scelerisque turpis, ac aliquet purus sagittis vitae. Sed id risus ut est facilisis lobortis id in massa. Donec feugiat turpis ullamcorper massa vehicula convallis. In pellentesque erat orci, sit amet tincidunt lorem. Nam vel quam velit. Fusce vel sem sit amet quam consequat egestas. Etiam dignissim viverra auctor.
-
-
-		%hr
-		.div
-			%h4 5. News article 5 blah blah blah
-			%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt scelerisque turpis, ac aliquet purus sagittis vitae. Sed id risus ut est facilisis lobortis id in massa. Donec feugiat turpis ullamcorper massa vehicula convallis. In pellentesque erat orci, sit amet tincidunt lorem. Nam vel quam velit. Fusce vel sem sit amet quam consequat egestas. Etiam dignissim viverra auctor.
-
-
-		%hr
-		.div
-			%h4 6. News article 6 blah blah blah
-			%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt scelerisque turpis, ac aliquet purus sagittis vitae. Sed id risus ut est facilisis lobortis id in massa. Donec feugiat turpis ullamcorper massa vehicula convallis. In pellentesque erat orci, sit amet tincidunt lorem. Nam vel quam velit. Fusce vel sem sit amet quam consequat egestas. Etiam dignissim viverra auctor.
-
+		/ .div
+		/ 	%h4 1. News article 1 blah blah blah
+		/ 	%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt scelerisque turpis, ac aliquet purus sagittis vitae. Sed id risus ut est facilisis lobortis id in massa. Donec feugiat turpis ullamcorper massa vehicula convallis. In pellentesque erat orci, sit amet tincidunt lorem. Nam vel quam velit. Fusce vel sem sit amet quam consequat egestas. Etiam dignissim viverra auctor.
 
 		%hr

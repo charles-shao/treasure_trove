@@ -1,7 +1,7 @@
 TreasureTrove::Application.routes.draw do
-  match "details/show"
+  get "details/show"
 
-  match "results/index"
+  post "results/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
