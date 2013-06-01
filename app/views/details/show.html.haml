@@ -1,12 +1,23 @@
 .detail-container
 
-  .left-container{:style => "background-color: #ffffff;"}
-    .well
-      %iframe{:frameborder => "0", :src => "http://trove.nla.gov.au/ndp/del/printArticlePdf/#{@article['id']}/3?print=n", :style => "width:700px; height:850px;"}
+  .left-container
+    .well{:style => "background-color: #ffffff;"}
+      %ul.nav.nav-pills{:id => "details-pdf-tab"}
+        %li.active
+          %a{"data-toggle" => "tab", :href => "#article"} Article
+        %li
+          %a{"data-toggle" => "tab", :href => "#fullpage"} Full Page
 
+      
 
-  .right-container{:style => "background-color: #ffffff;"}
-    .well
+      .tab-content
+        #article.tab-pane.active
+          %iframe{:frameborder => "0", :src => "http://trove.nla.gov.au/ndp/del/printArticlePdf/#{@article['id']}/3?print=n", :style => "width:700px; height:850px;"}
+        #fullpage.tab-pane
+          %iframe{:frameborder => "0", :src => @article['pdf'], :style => "width:700px; height:850px;"}
+
+  .right-container
+    .well{:style => "background-color: #ffffff;"}
       %ul.nav.nav-pills{:id => "details-tab"}
         %li.active
           %a{"data-toggle" => "tab", :href => "#text"} Text
@@ -22,9 +33,9 @@
       .tab-content
         #text.tab-pane.active
           = @article['articleText'].html_safe
-        #entities.tab-pane.active
+        #entities.tab-pane
           entities stuff
-        #wiki.tab-pane.active
+        #wiki.tab-pane
           wiki stuff
-        #nswapi.tab-pane.active
-        #maps.tab-pane.active
+        #nswapi.tab-pane
+        #maps.tab-pane
