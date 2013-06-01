@@ -61,11 +61,11 @@
 
 
         #wiki.tab-pane
-          wiki stuff
+          = @locations
         #nswapi.tab-pane
         #maps.tab-pane.active
           #map-canvas
 
 
 :javascript
-  google.maps.event.addDomListener(window, 'load', initialize("Sydney, NSW"));
+  google.maps.event.addDomListener(window, 'load', initialize('#{@locations[0]}'));
