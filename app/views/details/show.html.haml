@@ -26,10 +26,6 @@
           %a{"data-toggle" => "tab", :href => "#text"} Text
         %li
           %a{"data-toggle" => "tab", :href => "#entities"} Entities
-        %li
-          %a{"data-toggle" => "tab", :href => "#wiki"} Wikipedia Articles
-        %li
-          %a{"data-toggle" => "tab", :href => "#nswapi"} NSW API
         %li.active
           %a{"data-toggle" => "tab", :href => "#maps"} Maps
 
@@ -53,14 +49,15 @@
                 %li
                   %a.entity-link{"data-target" => "#data-#{i}-#{index}", "data-toggle" => "collapse", :type => "button", :entity_name => "#{entity['name']}", :loaded => "false"}
                     = entity['name']
-                  .collapse{:id => "data-#{i}-#{index}"}
+                  .collapse{:id => "data-#{i}-#{index}", :style => "padding-top: 15px"}
                     .well
+                      - entity.each do |property, value|
+                        - if !['instances','name', 'relevance', 'resolutions', 'commonname'].include? property and value != 'N/A'
+                          = "#{property}: #{value}"
+                          %br
                 - i = i+1
 
-                - entity.each do |property, value|
-                  - if !['instances','name', 'relevance', 'resolutions', 'commonname'].include? property and value != 'N/A'
-                    = "#{property}: #{value}"
-                    %br
+                
           %h5 Relations
           %ul
           - @open_calais[:relations].each do |relation, values|
