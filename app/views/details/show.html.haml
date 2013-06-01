@@ -21,7 +21,7 @@
 
       .tab-content
         #text.tab-pane.active
-          = @article['articleText']
+          = @article['articleText'].html_safe
         #entities.tab-pane.active
           entities stuff
         #wiki.tab-pane.active
