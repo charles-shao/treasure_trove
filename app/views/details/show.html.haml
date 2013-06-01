@@ -73,6 +73,8 @@
           = @locations
         #nswapi.tab-pane
         #maps.tab-pane
+          -if @locations.empty?
+            There are no geo-coded locations in this article.
           #map-canvas
 
 - if !@locations.empty?
