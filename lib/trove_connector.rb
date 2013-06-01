@@ -33,7 +33,6 @@ class TroveConnector
   def get_record(record_url, options={})
     parameters = RECORD_DEFAULT_OPTIONS.merge options
     response = self.class.get(record_url, query: parameters)
-    puts response
     response.parsed_response
   end
  

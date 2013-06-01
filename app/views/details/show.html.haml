@@ -14,7 +14,10 @@
         #article.tab-pane.active
           %iframe{:frameborder => "0", :src => "http://trove.nla.gov.au/ndp/del/printArticlePdf/#{@article['id']}/3?print=n", :style => "width:700px; height:850px;"}
         #fullpage.tab-pane
-          %iframe{:frameborder => "0", :src => @article['pdf'], :style => "width:700px; height:850px;"}
+          - if @article['pdf'].present?
+            %iframe{:frameborder => "0", :src => @article['pdf'], :style => "width:700px; height:850px;"}
+          - else
+            There is no full page.
 
   .right-container
     .well{:style => "background-color: #ffffff;"}
