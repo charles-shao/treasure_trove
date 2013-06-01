@@ -22,15 +22,15 @@
   .right-container
     .well{:style => "background-color: #ffffff;"}
       %ul.nav.nav-pills{:id => "details-tab"}
-        %li
+        %li.active
           %a{"data-toggle" => "tab", :href => "#text"} Text
         %li
           %a{"data-toggle" => "tab", :href => "#entities"} Entities
-        %li.active
-          %a{"data-toggle" => "tab", :href => "#maps"} Maps
+        %li
+          %a{"data-toggle" => "tab", :href => "#maps", :id => "map_tab"} Maps
 
       .tab-content
-        #text.tab-pane
+        #text.tab-pane.active
           = @article['articleText'].html_safe
         #entities.tab-pane
           %h5 Topics
@@ -67,9 +67,12 @@
         #wiki.tab-pane
           = @locations
         #nswapi.tab-pane
-        #maps.tab-pane.active
+        #maps.tab-pane
           #map-canvas
 
-
-:javascript
-  google.maps.event.addDomListener(window, 'load', initialize('#{@locations[0]}'));
+- if !@locations.empty?
+  :javascript
+    $("#map_tab").on('click', function(){
+      google.maps.event.addDomListener(window, 'load', initialize('#{@locations[0]}')); 
+    })
+    

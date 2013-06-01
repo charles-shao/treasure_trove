@@ -1,6 +1,12 @@
 var geocoder;
 var map;
 var infowindow = new google.maps.InfoWindow();
+
+function displayMap() {
+                    document.getElementById('map_canvas').style.display="block";
+                    initialize();
+                }
+
 function initialize(address) {
     geocoder = new google.maps.Geocoder();
     geocoder.geocode( { 'address': address}, function(results, status) {
