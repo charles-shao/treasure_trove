@@ -66,3 +66,8 @@ background-repeat:repeat;]
 .right-container > .well {
   margin-bottom: -20px;
 }
+
+#map-canvas {
+    width: 550px;
+    height: 550px;
+}
