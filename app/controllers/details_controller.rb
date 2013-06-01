@@ -23,4 +23,12 @@ class DetailsController < ApplicationController
     render :text => partial
   end
 
+  def get_dbp
+    dbc = DBpediaConnector.new
+    # @results = dbc.query(value)
+    @results = dbc.query(params[:value])
+    partial = render_to_string :partial => "details/dbp"
+    render :text => partial
+  end
+
 end

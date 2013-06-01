@@ -6,9 +6,10 @@
         %img{:src => "tt_logo.png", :style => "padding-bottom:20px;"}
         %center
 
-          .form-inline
-            %input{:name => "search_param", :type => "text", :class => "input-mysize", :id => "search_param"}/
-            %input{:name => "commit", :type => "submit", :value => "Search", :class => "btn btn-success", :id => "search"}/
-          %br
-          %br
-          %p A webapp hacked up in 48 hours for GovHack 2013
+
+          %form.form-inline{:action => "/results/index", :method => "post"}
+            %input{:name => "search_param", :type => "text", :class => "input-mysize", :placeholder => "Search for some treasures..."}/
+            %input{:name => "commit", :type => "submit", :value => "Search", :class => "btn btn-success"}/    
+            %br
+            %br
+            %p A webapp hacked up in 48 hours for GovHack 2013

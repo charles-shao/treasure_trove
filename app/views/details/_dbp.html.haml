@@ -1,0 +1,7 @@
+
+- if @results['results'].empty?
+	Nothing found...
+
+- @results['results'].each_with_index do |result, index|
+	%h5= "#{index +1}. #{result['label']}"
+	%p= result['description']
