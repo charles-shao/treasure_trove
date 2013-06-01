@@ -3,6 +3,17 @@
     = image_tag "tt_logo.png"
     = image_tag("govhack_logo.png", :id => 'govhack_logo', :class => "pull-right")
     %hr
+    %p{:id => 'description'}
+      We enrich Trove data, with OpenCalais. A service that provides metadata generation.
+    %br
+    %p
+      It provides us with entities such as locations, people or organisations within the Trove data which enhances the contextual information available.
+    %p
+      For location data, we've included Google Maps, plotting locations OpenCalais provides a more wider, possibly global scope to the stories told by TreasureTrove.
+    %p
+      For richer context data, we’ve included dbpedia integration which allows the union of rich wiki styled data crossed with the basis provided by Trove.
+      TreasureTrove is developed in Ruby On Rails, leveraging OpenCalais, Google Maps and dbpedia with the potential to integrate many more.
+    %hr
     %h5="Integrating:"
     = image_tag("calais_logo.jpg", :id => 'calais_logo')
     = image_tag("maps_logo.png", :id => 'maps_logo')
