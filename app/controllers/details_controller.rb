@@ -14,6 +14,8 @@ class DetailsController < ApplicationController
     @article = TROVE.get_article params['article']
     enriched = OC.enrich @article['articleText']
     @open_calais = OC.clean_results enriched
+    puts "#Test {@open_calais}"
+
     pp @open_calais
     @mapTheseEntities = ['City', 'Company', 'Continent', 'Country', 'Facility', 'Natural Feature', 'Organization', 'Place', 'ProvinceOrState', 'Region', 'Company Location', 'Address', 'Geo', 'ProvinceOrState']
 
@@ -25,7 +27,7 @@ class DetailsController < ApplicationController
         @locations.push entity['name'].gsub("'", "")
       end if !type.nil? and @mapTheseEntities.include?(type)
 
-      end
+    end
   end
 
   def get_record

@@ -34,11 +34,11 @@ class OpenCalaisConnector
         end
       end
     end
-    # cleaned = map_entity_relations(results, cleaned)
+    map_entity_relations(results, cleaned)
     cleaned
   end
 
-  private
+  # private
 
   def clean_entities(entity_hash, cleaned)
     type = entity_hash['_type']
@@ -61,21 +61,17 @@ class OpenCalaisConnector
     end
   end
 
-  def clean_social(social_hash)
-
-  end
-
   def map_entity_relations(raw, cleaned)
-    cleaned[:relations].each do |relation|
-      relation
-      relation.each do |k, v|
-
-        if v.start_with? 'http'
-          relation[k] = raw[v]['name']
+    cleaned[:relations].each_value do |relations|
+      relations.each do |relation|
+        relation.each do |k, v|
+          puts "test: #{relation[k]}"
+          if v.is_a? String and v.start_with? 'http'
+            relation[k] = raw[v]['name']
+          end
         end
       end
     end
-
   end
 
   def clean_topics(topics_hash, cleaned)

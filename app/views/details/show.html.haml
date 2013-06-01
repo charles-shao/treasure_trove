@@ -62,6 +62,11 @@
           %ul
           - @open_calais[:relations].each do |relation, values|
             %li= relation
+            - values.each do |property_set|
+              - property_set.each do |property, value|
+                - if !['instances'].include? property and value != 'N/A'
+                  = "#{property}: #{value}"
+                  %br
 
 
         #wiki.tab-pane
