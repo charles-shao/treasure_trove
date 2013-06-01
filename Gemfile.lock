@@ -64,6 +64,7 @@ GEM
     mime-types (1.23)
     multi_json (1.7.4)
     multi_xml (0.5.3)
+    nokogiri (1.5.9)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -118,6 +119,7 @@ DEPENDENCIES
   haml-rails
   httparty
   jquery-rails
+  nokogiri
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
   sqlite3

@@ -1,7 +1,9 @@
 TreasureTrove::Application.routes.draw do
-  get "details/show"
+  match "details/show"
 
-  post "results/index"
+  match "results/index"
+  post "results/fetch_result", :to => "results#fetch_result"
+  get "details/get_record", :to => "details#get_record"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
