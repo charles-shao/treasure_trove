@@ -34,7 +34,14 @@
         #text.tab-pane.active
           = @article['articleText'].html_safe
         #entities.tab-pane
-          entities stuff
+          %ul
+          - @open_calais[:entities].each do |type, entities|
+            %li= type
+            %ul
+              - entities.each do |entity|
+                %li= entity['name']
+
+
         #wiki.tab-pane
           wiki stuff
         #nswapi.tab-pane

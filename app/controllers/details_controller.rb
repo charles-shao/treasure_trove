@@ -9,8 +9,7 @@ class DetailsController < ApplicationController
 
   def show
     @article = TROVE.get_article params['article']
-    @enriched = OC.enrich @article['articleText']
-    pp @results
-    pp @enriched
+    enriched = OC.enrich @article['articleText']
+    @open_calais = OC.clean_results enriched
   end
 end
