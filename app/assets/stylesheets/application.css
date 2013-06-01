@@ -18,8 +18,7 @@ background-image:url('tt_bg.png');
 background-repeat:repeat;]
 }
 
-.input-mysize { width: 450px;
-				height: 150px;}
+.input-mysize { width: 450px;}
 
 .center-div {
 	top: 50%;
