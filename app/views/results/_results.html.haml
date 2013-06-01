@@ -6,7 +6,7 @@
         .div
           %h4= link_to result['heading'], details_show_path(:article => result['url'])
           -#%a.active-result{:article => result['url']}= result['heading']
-          %p= result['snippet']
+          %p= result['snippet'].html_safe
           %p= result['title']['value']
           %hr
       %hr
