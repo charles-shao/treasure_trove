@@ -1,0 +1,31 @@
+.container.content
+  .container.well{:style => "min-height: 800px; background-color: #ffffff;"}
+    = image_tag "tt_logo.png"
+    = image_tag("govhack_logo.png", :id => 'govhack_logo', :class => "pull-right")
+    %hr
+    %p{:id => 'description'}
+      We enrich Trove data, with OpenCalais. A service that provides metadata generation.
+    %br
+    %p
+      It provides us with entities such as locations, people or organisations within the Trove data which enhances the contextual information available.
+    %p
+      For location data, we've included Google Maps, plotting locations OpenCalais provides a more wider, possibly global scope to the stories told by TreasureTrove.
+    %p
+      For richer context data, we’ve included dbpedia integration which allows the union of rich wiki styled data crossed with the basis provided by Trove.
+      TreasureTrove is developed in Ruby On Rails, leveraging OpenCalais, Google Maps and dbpedia with the potential to integrate many more.
+    %hr
+    %h5="Integrating:"
+    = image_tag("calais_logo.jpg", :id => 'calais_logo')
+    = image_tag("maps_logo.png", :id => 'maps_logo')
+    = image_tag("trove_logo.gif", :id => 'trove_logo')
+    = image_tag("dbpedia_logo.png", :id => 'dbpedia_logo')
+    %hr
+    #intersect
+      = image_tag("intersect_logo.gif", :id => 'intersect_logo')
+      = image_tag("intersection_logo.png", :id => 'intersection_logo')
+    %hr
+    %p{:id => 'bunch_of_guys'}= "Written by a bunch of guys from Intersect Australia. Known as Intersection."
+    %br
+    %h4="Led by: Ilya Anisimoff"
+    %h5="With: Khanh Nguyen & Charles Shao"
+    %h6="Zapported by: vuncent trun & stunley hun"

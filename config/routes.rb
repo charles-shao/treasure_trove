@@ -1,4 +1,6 @@
 TreasureTrove::Application.routes.draw do
+  get "about/index"
+
   match "details/show"
 
   match "results/index"

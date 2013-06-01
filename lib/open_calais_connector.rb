@@ -54,7 +54,7 @@ class OpenCalaisConnector
   def clean_relations(relation_hash, cleaned)
     type = relation_hash['_type']
     subset = relation_hash.except('_typeGroup', '_type', '_typeReference')
-    if cleaned.key? type
+    if cleaned[:relations].key? type
       cleaned[:relations][type] << subset
     else
       cleaned[:relations][type] = [subset]

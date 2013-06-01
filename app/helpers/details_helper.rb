@@ -1,5 +1,2 @@
 module DetailsHelper
-
-
-
 end
