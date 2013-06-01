@@ -37,3 +37,31 @@ background-repeat:repeat;]
     background-color: #f3f3f3;
     position:fixed;
 }
+
+.detail-container {
+  height: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.left-container {
+  display: inline-block;
+  height: 100%;
+  width: 49%;
+  vertical-align: top;
+}
+
+.left-container > .well {
+  margin-bottom: -20px;
+}
+
+.right-container {
+  display: inline-block;
+  height: 100%;
+  width: 49%;
+  vertical-align: top;
+}
+
+.right-container > .well {
+  margin-bottom: -20px;
+}
