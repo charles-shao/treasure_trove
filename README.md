@@ -1,4 +1,4 @@
-Treasure Trove
+GovHack 2013
 ==============
 
 ![Alt text](/app/assets/images/tt_logo.png)
