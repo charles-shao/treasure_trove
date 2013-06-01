@@ -2,7 +2,7 @@
 
   .left-container{:style => "background-color: #ffffff;"}
     .well
-      = image_tag "article104268176-3-001.jpg"
+      %iframe{:frameborder => "0", :src => "http://trove.nla.gov.au/ndp/del/printArticlePdf/#{@article['id']}/3?print=n", :style => "width:700px; height:850px;"}
 
 
   .right-container{:style => "background-color: #ffffff;"}
