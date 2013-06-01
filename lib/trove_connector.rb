@@ -20,7 +20,7 @@ class TroveConnector
  
   def query_records(term, options={})
     parameters = QUERY_DEFAULT_OPTIONS.merge options
-    parameters[:q] = URI::escape(term)
+    parameters[:q] = term
     response = self.class.get('/result', query: parameters)
     response.parsed_response
   end
