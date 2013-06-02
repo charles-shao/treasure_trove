@@ -25,7 +25,7 @@
         %li.active
           %a{"data-toggle" => "tab", :href => "#text"} Text
         %li
-          %a{"data-toggle" => "tab", :href => "#entities"} Entities
+          %a{"data-toggle" => "tab", :href => "#entities"} Analysis
         %li
           %a{"data-toggle" => "tab", :href => "#maps", :id => "map_tab"} Maps
 
@@ -33,31 +33,31 @@
         #text.tab-pane.active
           = @article['articleText'].html_safe
         #entities.tab-pane
-          %h5 Topics
+          %h4 Topics
           - @open_calais[:topics].each do |topic|
             %span.label.label-success= topic[:name]
-          %h5 Suggested Tags
+          %h4 Suggested Tags
           - @open_calais[:tags].each do |tag|
             %span.label= tag
-          %h5 Entities
+          %h4 Entities
           %ul
           - i = 0
           - @open_calais[:entities].each do |type, entities|
-            %h3= type
+            %h5= type
             %ul
               - entities.each_with_index do |entity, index|
-                %li
-                  %a.entity-link{"data-target" => "#data-#{i}-#{index}", "data-toggle" => "collapse", :type => "button", :entity_name => "#{entity['name']}", :loaded => "false", :style => "cursor: hand; cursor: pointer;"}
-                    = entity['name']
-                  .collapse{:id => "data-#{i}-#{index}", :style => "padding-top: 15px"}
-                    .well
-                      -if !type.nil? and @mapTheseEntities.include?(type)
-                        %button.map-button{:entity_name => entity['name']} See on map
+                
+                %a.entity-link{"data-target" => "#data-#{i}-#{index}", "data-toggle" => "collapse", :type => "button", :entity_name => "#{entity['name']}", :loaded => "false", :style => "cursor: hand; cursor: pointer;", :entity_type => type}
+                  = entity['name']
+                .collapse{:id => "data-#{i}-#{index}", :style => "padding-top: 15px"}
+                  .well
+                    -if !type.nil? and @mapTheseEntities.include?(type)
+                      %button.map-button.pull-right{:entity_name => entity['name'], :class => "btn-primary"} See on map
+                      %br
+                    - entity.each do |property, value|
+                      - if !['instances','name', 'relevance', 'resolutions', 'commonname'].include? property and value != 'N/A'
+                        = "#{property}: #{value}"
                         %br
-                      - entity.each do |property, value|
-                        - if !['instances','name', 'relevance', 'resolutions', 'commonname'].include? property and value != 'N/A'
-                          = "#{property}: #{value}"
-                          %br
                 - i = i+1
 
                 
@@ -70,17 +70,11 @@
                 - if !['instances'].include? property and value != 'N/A'
                   = "#{property}: #{value}"
                   %br
-
-
-        #wiki.tab-pane
-          = @locations
-        #nswapi.tab-pane
         #maps.tab-pane
           -if @locations.empty?
             There are no geo-coded locations in this article.
           #map-canvas
 
-= @locations.inspect
 - if !@locations.empty?
   :javascript
     var lastEntity = null;

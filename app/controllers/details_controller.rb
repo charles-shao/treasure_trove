@@ -40,7 +40,10 @@ class DetailsController < ApplicationController
   def get_dbp
     dbc = DBpediaConnector.new
     # @results = dbc.query(value)
-    @results = dbc.query(params[:value])
+    @mapTheseEntities = ['City', 'Company', 'Continent', 'Country', 'Facility', 'Natural Feature', 'Organization', 'Place', 'ProvinceOrState', 'Region', 'Company Location', 'Address', 'Geo', 'ProvinceOrState']
+    type = "person" if params[:type] == "Position" || params[:type] == "Person"
+    type = "place" if @mapTheseEntities.include? params[:type]
+    @results = dbc.query(params[:value], type)
     partial = render_to_string :partial => "details/dbp"
     render :text => partial
   end
