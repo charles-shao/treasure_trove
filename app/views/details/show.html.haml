@@ -51,6 +51,9 @@
                     = entity['name']
                   .collapse{:id => "data-#{i}-#{index}", :style => "padding-top: 15px"}
                     .well
+                      -if !type.nil? and @mapTheseEntities.include?(type)
+                        %button.map-button{:entity_name => entity['name']} See on map
+                        %br
                       - entity.each do |property, value|
                         - if !['instances','name', 'relevance', 'resolutions', 'commonname'].include? property and value != 'N/A'
                           = "#{property}: #{value}"
@@ -77,9 +80,22 @@
             There are no geo-coded locations in this article.
           #map-canvas
 
+= @locations.inspect
 - if !@locations.empty?
   :javascript
+    var lastEntity = null;
     $("#map_tab").on('click', function(){
-      google.maps.event.addDomListener(window, 'load', initialize('#{@locations[0]}')); 
-    })
+      if(lastEntity == null) {
+        google.maps.event.addDomListener(window, 'load', initialize('#{@locations[0]}'));
+      } else {
+        google.maps.event.addDomListener(window, 'load', initialize(lastEntity));
+      }
+    });
+
+    $(".map-button").on("click", function(){
+      var entity = $(this).attr('entity_name');
+      $("#details-tab a:last").tab('show');
+      lastEntity = entity;
+      google.maps.event.addDomListener(window, 'load', initialize(entity));
+    });
     

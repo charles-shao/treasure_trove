@@ -12,7 +12,7 @@ function initialize(address) {
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var mapOptions = {
-                zoom: 14,
+                zoom: 13,
                 center: results[0].geometry.location,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
@@ -50,3 +50,5 @@ function createMarker(place) {
         infowindow.open(map, this);
     });
 }
+
+
