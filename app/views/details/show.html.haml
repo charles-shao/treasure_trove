@@ -47,7 +47,7 @@
             %ul
               - entities.each_with_index do |entity, index|
                 %li
-                  %a.entity-link{"data-target" => "#data-#{i}-#{index}", "data-toggle" => "collapse", :type => "button", :entity_name => "#{entity['name']}", :loaded => "false"}
+                  %a.entity-link{"data-target" => "#data-#{i}-#{index}", "data-toggle" => "collapse", :type => "button", :entity_name => "#{entity['name']}", :loaded => "false", :style => "cursor: hand; cursor: pointer;"}
                     = entity['name']
                   .collapse{:id => "data-#{i}-#{index}", :style => "padding-top: 15px"}
                     .well
