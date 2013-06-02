@@ -71,3 +71,16 @@ body
     width: 425px;
     height: 425px;
 }
+
+.relevance {
+    width: 66px;
+    padding-left: 20px;
+}
+.relevance-donut {
+    display: inline-block;
+}
+
+.relevance-number {
+    text-align: center;
+    padding-top: 10px;
+}
