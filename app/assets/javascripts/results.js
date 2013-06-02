@@ -17,7 +17,6 @@ $(document).ready(function(){
       $("#treasureCarousel > .carousel-inner > .item.active").next().delete();
     }
     getRecord(record);
-    setTimeout(function(){}, 2000);
     $("#treasureCarousel").carousel('next');
   });
 
