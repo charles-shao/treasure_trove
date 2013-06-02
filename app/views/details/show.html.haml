@@ -62,15 +62,16 @@
                 - i = i+1
 
                 
-          %h5 Relations
-          %ul
+          %h4 Events and Facts
           - @open_calais[:relations].each do |relation, values|
-            %li= relation
+            %h5= relation
             - values.each do |property_set|
+              %p
               - property_set.each do |property, value|
                 - if !['instances'].include? property and value != 'N/A'
                   = "#{property}: #{value}"
                   %br
+
         #maps.tab-pane
           -if @locations.empty?
             There are no geo-coded locations in this article.
