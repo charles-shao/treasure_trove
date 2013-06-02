@@ -3,11 +3,14 @@ GovHack 2013
 
 ![Alt text](/app/assets/images/tt_logo.png)
 
-We enrich Trove data, with OpenCalais. A service that provides metadata generation.
+A Trove x OpenCalais x DBpedia x Google Maps mashup.
 
-It provides us with entities such as locations, people or organisations within the Trove data which enhances the contextual information available.
+We enhance the Trove newspaper article research experience by providing topic identification, named entity recognition, relation extraction, relevant supplementary information, and maps.
 
-For location data, we've included Google Maps, plotting locations OpenCalais provides a more wider, possibly global scope to the stories told by TreasureTrove.
+For newspaper article text we use the Trove API, which is then analysed using the OpenCalais service. This provides us with entities such as locations, people or organisations within the Trove data, which we use to enhance the contextual information available.
 
-For richer context data, we’ve included DBPedia integration which allows the union of rich wiki styled data crossed with the basis provided by Trove. TreasureTrove is developed in Ruby On Rails, leveraging OpenCalais, Google Maps and dbpedia with the potential to integrate many more.
+For the contextual information, we’ve included DBpedia integration, which allows the union of rich wiki-style data crossed with the basis provided by Trove. We provide spatial context to place mentions using Google Maps.
 
+TreasureTrove is developed in Ruby on Rails, leveraging  Trove, OpenCalais, Google Maps, and DBpedia services with the potential to integrate many more.
+
+TreasureTrove is released under the MIT License, see [LICENSE.txt](LICENSE.txt)
