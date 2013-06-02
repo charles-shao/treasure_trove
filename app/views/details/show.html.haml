@@ -43,6 +43,7 @@
           %ul
           - i = 0
           - @open_calais[:entities].each do |type, entities|
+
             %h5= type
             %ul
               - entities.each_with_index do |entity, index|
@@ -52,7 +53,7 @@
                 .collapse{:id => "data-#{i}-#{index}", :style => "padding-top: 15px"}
                   .well
                     -if !type.nil? and @mapTheseEntities.include?(type)
-                      %button.map-button.pull-right{:entity_name => entity['name'], :class => "btn-primary"} See on map
+                      .btn.map-button.pull-right{:entity_name => entity['name'], :class => "btn-success btn-small"} See on map
                       %br
                     - entity.each do |property, value|
                       - if !['instances','name', 'relevance', 'resolutions', 'commonname'].include? property and value != 'N/A'

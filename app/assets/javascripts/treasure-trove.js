@@ -28,4 +28,28 @@ $(document).ready(function(){
 		//
 	});
 
+	$(document).on("click", ".show-button", function(){
+		var entity = $(this).attr('id');
+
+		for (var i=2;i<6;i++){ 
+			$('#'+entity+"-"+i).removeClass('hidden');
+		}
+
+		$('#less-'+entity).removeClass('hidden');
+		$(this).hide();
+
+    });
+
+    $(document).on("click", ".show-less-button", function(){
+		var entity = $(this).attr('infotype');
+
+		for (var i=2;i<6;i++){ 
+			$('#'+entity+"-"+i).addClass('hidden');
+		}
+
+		$(this).addClass('hidden');
+		$('#'+entity).show();
+
+    });
+
 });

@@ -18,9 +18,10 @@ function initialize(address) {
             };
 
             map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
             var request = {
                 location: results[0].geometry.location,
-                radius: 500
+                radius: '0'
             };
             var service = new google.maps.places.PlacesService(map);
             service.nearbySearch(request, callback);

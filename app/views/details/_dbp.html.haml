@@ -2,6 +2,16 @@
 - if @results['results'].empty?
 	Nothing found...
 
-- @results['results'].each_with_index do |result, index|
-	%h5= "#{index +1}. #{result['label']}"
-	%p= result['description']
+- else
+	- @results['results'].each_with_index do |result, index|
+		- if index == 0
+			.div{:id => "#{params[:value]}-#{index+1}"}
+				%h5= "#{index +1}. #{result['label']}"
+				%p= result['description']
+		- else
+			.div{:id => "#{params[:value]}-#{index+1}", :class => "hidden"}
+				%h5= "#{index +1}. #{result['label']}"
+				%p= result['description']
+
+	.btn.show-button{:class => "btn-success", :id => "#{params[:value]}"} Show more
+	.btn.show-less-button{:class => "btn-success hidden",:infotype => "#{params[:value]}" ,:id => "less-#{params[:value]}"} Show less
