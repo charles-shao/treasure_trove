@@ -1,6 +1,5 @@
 GovHack 2013
 ==============
-treasure-trove.intersect.org.au
 ![Alt text](/app/assets/images/tt_logo.png)
 
 A Trove x OpenCalais x DBpedia x Google Maps mashup.
@@ -12,5 +11,7 @@ For newspaper article text we use the Trove API, which is then analysed using th
 For the contextual information, we’ve included DBpedia integration, which allows the union of rich wiki-style data crossed with the basis provided by Trove. We provide spatial context to place mentions using Google Maps.
 
 TreasureTrove is developed in Ruby on Rails, leveraging  Trove, OpenCalais, Google Maps, and DBpedia services with the potential to integrate many more.
+
+Check it out at: treasure-trove.intersect.org.au
 
 TreasureTrove is released under the MIT License, see [LICENSE.txt](LICENSE.txt)
